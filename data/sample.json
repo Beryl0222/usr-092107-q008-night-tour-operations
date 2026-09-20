@@ -1,0 +1,9 @@
+{
+  "event_id": "sample-008-001",
+  "event_type": "PROGRAM_CLEARED",
+  "aggregate_type": "night_program",
+  "aggregate_id": "night_tour_operations-001",
+  "occurred_at": "2026-09-20T18:00:00+08:00",
+  "version": 1,
+  "summary": "登记夜游联合运行中心的首条领域记录"
+}
