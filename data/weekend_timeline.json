@@ -1,0 +1,1146 @@
+[
+  {
+    "event_id": "e01",
+    "event_type": "PROGRAM_CLEARED",
+    "aggregate_type": "night_program",
+    "aggregate_id": "prog-2026-1010",
+    "occurred_at": "2026-10-10T16:00:00+08:00",
+    "version": 1,
+    "summary": "周末夜游联合活动许可生效：博物馆夜场、山野观星、非遗演出、夜市同日举办",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "permit_no": "文旅联席许〔2026〕1010号",
+      "program_date": "2026-10-10",
+      "experiences": ["exp-museum", "exp-stargazing", "exp-heritage"],
+      "conditions": "林区雷雨大风预警下观星活动优先缩线或取消；22:00 后林区侧执行噪声静默"
+    }
+  },
+  {
+    "event_id": "e02",
+    "event_type": "EXPERIENCE_REGISTERED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-museum",
+    "occurred_at": "2026-10-10T16:10:00+08:00",
+    "version": 1,
+    "summary": "博物馆夜场登记",
+    "source_system": "museum-ops",
+    "payload": { "experience_id": "exp-museum", "name": "县博物馆夜场·青铜之光", "nature_observation": false, "operator_id": "museum-ops" }
+  },
+  {
+    "event_id": "e03",
+    "event_type": "EXPERIENCE_REGISTERED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-stargazing",
+    "occurred_at": "2026-10-10T16:12:00+08:00",
+    "version": 1,
+    "summary": "山野观星登记（自然观察类，敏感物种/雷雨/消防风险下优先缩线或取消）",
+    "source_system": "forest-station",
+    "payload": { "experience_id": "exp-stargazing", "name": "北山山脊观星", "nature_observation": true, "operator_id": "forest-station" }
+  },
+  {
+    "event_id": "e04",
+    "event_type": "EXPERIENCE_REGISTERED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-heritage",
+    "occurred_at": "2026-10-10T16:14:00+08:00",
+    "version": 1,
+    "summary": "非遗演出登记",
+    "source_system": "heritage-troupe",
+    "payload": { "experience_id": "exp-heritage", "name": "非遗夜戏台·皮影与民歌", "nature_observation": false, "operator_id": "heritage-troupe" }
+  },
+  {
+    "event_id": "e05",
+    "event_type": "ZONE_REGISTERED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-museum-hall",
+    "occurred_at": "2026-10-10T16:20:00+08:00",
+    "version": 1,
+    "summary": "博物馆主厅分区登记，容量 1200",
+    "source_system": "museum-ops",
+    "payload": { "zone_id": "z-museum-hall", "name": "博物馆夜场主厅", "capacity": 1200 }
+  },
+  {
+    "event_id": "e06",
+    "event_type": "ZONE_REGISTERED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-forest-star",
+    "occurred_at": "2026-10-10T16:21:00+08:00",
+    "version": 1,
+    "summary": "观星集结区登记，容量 300",
+    "source_system": "forest-station",
+    "payload": { "zone_id": "z-forest-star", "name": "北山观星集结区", "capacity": 300 }
+  },
+  {
+    "event_id": "e07",
+    "event_type": "ZONE_REGISTERED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-forest-ridge",
+    "occurred_at": "2026-10-10T16:22:00+08:00",
+    "version": 1,
+    "summary": "山脊观星点登记，容量 120",
+    "source_system": "forest-station",
+    "payload": { "zone_id": "z-forest-ridge", "name": "北山山脊观星点", "capacity": 120 }
+  },
+  {
+    "event_id": "e08",
+    "event_type": "ZONE_REGISTERED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-heritage-stage",
+    "occurred_at": "2026-10-10T16:23:00+08:00",
+    "version": 1,
+    "summary": "非遗舞台区登记，容量 800",
+    "source_system": "heritage-troupe",
+    "payload": { "zone_id": "z-heritage-stage", "name": "非遗夜戏台", "capacity": 800 }
+  },
+  {
+    "event_id": "e09",
+    "event_type": "ZONE_REGISTERED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-night-market",
+    "occurred_at": "2026-10-10T16:24:00+08:00",
+    "version": 1,
+    "summary": "夜市街区登记，容量 5000（含临摊通道）",
+    "source_system": "market-office",
+    "payload": { "zone_id": "z-night-market", "name": "城南河夜市街区", "capacity": 5000 }
+  },
+  {
+    "event_id": "e10",
+    "event_type": "ZONE_REGISTERED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-metro-exit",
+    "occurred_at": "2026-10-10T16:25:00+08:00",
+    "version": 1,
+    "summary": "地铁 B 口集散区登记，容量 2000",
+    "source_system": "metro-ops",
+    "payload": { "zone_id": "z-metro-exit", "name": "地铁 2 号线 B 口集散区", "capacity": 2000 }
+  },
+  {
+    "event_id": "e11",
+    "event_type": "BOUNDARY_RULE_PUBLISHED",
+    "aggregate_type": "site_boundary",
+    "aggregate_id": "bnd-forest-edge",
+    "occurred_at": "2026-10-10T16:30:00+08:00",
+    "version": 1,
+    "summary": "公布林区侧照明与噪声边界：22:00-06:00 静默，上限 55 分贝",
+    "source_system": "eco-ranger",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "zone_ids": ["z-forest-star", "z-forest-ridge", "z-night-market"],
+      "noise": {
+        "limit_db": 55,
+        "quiet_hours": [{ "start": "22:00", "end": "06:00", "label": "林区夜间噪声静默时段（野生动物保护）" }]
+      },
+      "lighting": { "rule": "山脊点禁止直射树冠与林缘的强光源", "enforced_for": ["z-forest-ridge"] }
+    }
+  },
+  {
+    "event_id": "e12",
+    "event_type": "EVACUATION_PLAN_PUBLISHED",
+    "aggregate_type": "evacuation_plan",
+    "aggregate_id": "evp-county-night",
+    "occurred_at": "2026-10-10T16:40:00+08:00",
+    "version": 1,
+    "summary": "夜游联合疏散预案发布：林区两队沿护林道撤至集结区",
+    "source_system": "fire-rescue",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "plan_id": "evp-county-night",
+      "zone_ids": ["z-forest-star", "z-forest-ridge", "z-heritage-stage", "z-night-market", "z-metro-exit"],
+      "routes": [
+        { "route_id": "r-ridge-down", "from_zone": "z-forest-ridge", "to_assembly": "z-forest-star" },
+        { "route_id": "r-star-bus", "from_zone": "z-forest-star", "to_assembly": "游客中心停车场" }
+      ]
+    }
+  },
+  {
+    "event_id": "e13",
+    "event_type": "TRANSIT_SCHEDULED",
+    "aggregate_type": "transit_service",
+    "aggregate_id": "svc-metro-2",
+    "occurred_at": "2026-10-10T16:50:00+08:00",
+    "version": 1,
+    "summary": "地铁 2 号线夜班时刻：21:30、22:00、22:45（末班）",
+    "source_system": "metro-ops",
+    "payload": {
+      "service_id": "svc-metro-2",
+      "mode": "metro",
+      "operator_id": "metro-ops",
+      "departures": [
+        { "departs_at": "2026-10-10T21:30:00+08:00", "capacity": 1800, "label": "夜间次班" },
+        { "departs_at": "2026-10-10T22:00:00+08:00", "capacity": 1800, "label": "末班前次车" },
+        { "departs_at": "2026-10-10T22:45:00+08:00", "capacity": 1800, "label": "计划末班" }
+      ]
+    }
+  },
+  {
+    "event_id": "e14",
+    "event_type": "TRANSIT_SCHEDULED",
+    "aggregate_type": "transit_service",
+    "aggregate_id": "svc-shuttle-forest",
+    "occurred_at": "2026-10-10T16:52:00+08:00",
+    "version": 1,
+    "summary": "北山常规接驳大巴计划两班",
+    "source_system": "bus-co",
+    "payload": {
+      "service_id": "svc-shuttle-forest",
+      "mode": "shuttle_bus",
+      "operator_id": "bus-co",
+      "departures": [
+        { "departs_at": "2026-10-10T20:00:00+08:00", "capacity": 45, "label": "进山接驳" },
+        { "departs_at": "2026-10-10T22:30:00+08:00", "capacity": 45, "label": "返程接驳" }
+      ]
+    }
+  },
+  {
+    "event_id": "e15",
+    "event_type": "RESPONSE_OPENED",
+    "aggregate_type": "joint_response",
+    "aggregate_id": "resp-1010",
+    "occurred_at": "2026-10-10T17:10:00+08:00",
+    "version": 1,
+    "summary": "文旅联席值班室开班，联合处置链路 corr-night-1010 启动",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": { "response_id": "resp-1010", "duty_commander": "值班长" }
+  },
+  {
+    "event_id": "e16",
+    "event_type": "VENDOR_CHECKED_IN",
+    "aggregate_type": "participant",
+    "aggregate_id": "ven-li-snack",
+    "occurred_at": "2026-10-10T17:30:00+08:00",
+    "version": 1,
+    "summary": "夜市临摊李某报到，摊位临-017",
+    "source_system": "market-office",
+    "payload": { "participant_id": "ven-li-snack", "vendor_name": "李某小吃", "stall_no": "临-017", "temporary": true }
+  },
+  {
+    "event_id": "e17",
+    "event_type": "PERFORMER_CHECKED_IN",
+    "aggregate_type": "participant",
+    "aggregate_id": "perf-troupe",
+    "occurred_at": "2026-10-10T17:35:00+08:00",
+    "version": 1,
+    "summary": "非遗演出团 12 人全部报到，舞美完成自检",
+    "source_system": "heritage-troupe",
+    "payload": { "participant_id": "perf-troupe", "troupe": "县皮影民歌团", "headcount": 12 }
+  },
+  {
+    "event_id": "e18",
+    "event_type": "SESSION_SCHEDULED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-museum",
+    "occurred_at": "2026-10-10T18:05:00+08:00",
+    "version": 2,
+    "summary": "博物馆夜场 18:30-22:00",
+    "source_system": "museum-ops",
+    "payload": { "session_id": "ses-museum-1010", "experience_id": "exp-museum", "zone_ids": ["z-museum-hall"], "starts_at": "2026-10-10T18:30:00+08:00", "ends_at": "2026-10-10T22:00:00+08:00" }
+  },
+  {
+    "event_id": "e19",
+    "event_type": "SESSION_SCHEDULED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-stargazing",
+    "occurred_at": "2026-10-10T18:10:00+08:00",
+    "version": 2,
+    "summary": "观星场 19:30 集结，路线经集结区至山脊点",
+    "source_system": "forest-station",
+    "payload": {
+      "session_id": "ses-star-1010",
+      "experience_id": "exp-stargazing",
+      "zone_ids": ["z-forest-star", "z-forest-ridge"],
+      "starts_at": "2026-10-10T19:30:00+08:00",
+      "ends_at": "2026-10-10T22:00:00+08:00",
+      "waypoints": ["wp-base", "wp-ridge"]
+    }
+  },
+  {
+    "event_id": "e20",
+    "event_type": "SESSION_SCHEDULED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-heritage",
+    "occurred_at": "2026-10-10T18:15:00+08:00",
+    "version": 2,
+    "summary": "非遗夜戏 19:30-22:10 两场连演",
+    "source_system": "heritage-troupe",
+    "payload": { "session_id": "ses-her-1930", "experience_id": "exp-heritage", "zone_ids": ["z-heritage-stage"], "starts_at": "2026-10-10T19:30:00+08:00", "ends_at": "2026-10-10T22:10:00+08:00" }
+  },
+  {
+    "event_id": "e21",
+    "event_type": "TICKETS_REDEEMED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-museum",
+    "occurred_at": "2026-10-10T18:40:00+08:00",
+    "version": 3,
+    "summary": "博物馆夜场核销 2 张团体票",
+    "source_system": "museum-ops",
+    "payload": { "experience_id": "exp-museum", "session_id": "ses-museum-1010", "redemption_ids": ["rd-mus-001", "rd-mus-002"] }
+  },
+  {
+    "event_id": "e22",
+    "event_type": "TICKETS_REDEEMED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-stargazing",
+    "occurred_at": "2026-10-10T18:42:00+08:00",
+    "version": 3,
+    "summary": "观星场核销 3 张票（2 名成人 1 名儿童）",
+    "source_system": "forest-station",
+    "payload": { "experience_id": "exp-stargazing", "session_id": "ses-star-1010", "redemption_ids": ["rd-star-001", "rd-star-002", "rd-star-003"] }
+  },
+  {
+    "event_id": "e23",
+    "event_type": "TICKETS_REDEEMED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-heritage",
+    "occurred_at": "2026-10-10T18:45:00+08:00",
+    "version": 3,
+    "summary": "非遗演出核销 4 张票",
+    "source_system": "heritage-troupe",
+    "payload": { "experience_id": "exp-heritage", "session_id": "ses-her-1930", "redemption_ids": ["rd-her-001", "rd-her-002", "rd-her-003", "rd-her-004"] }
+  },
+  {
+    "event_id": "e24",
+    "event_type": "TRANSIT_LAST_SERVICE_CHANGED",
+    "aggregate_type": "transit_service",
+    "aggregate_id": "svc-metro-2",
+    "occurred_at": "2026-10-10T19:40:00+08:00",
+    "version": 2,
+    "summary": "地铁 2 号线末班临时提前至 22:15（接触网检修），跨场景返程行程受影响",
+    "source_system": "metro-ops",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "service_id": "svc-metro-2",
+      "last_departs_at": "2026-10-10T22:15:00+08:00",
+      "previous_last_departs_at": "2026-10-10T22:45:00+08:00",
+      "reason": "接触网临时检修，末班提前 30 分钟"
+    }
+  },
+  {
+    "event_id": "e25",
+    "event_type": "CROWD_COUNT_REPORTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-museum-hall",
+    "occurred_at": "2026-10-10T20:05:00+08:00",
+    "version": 2,
+    "summary": "博物馆东闸机实数 780",
+    "source_system": "gate-museum-east",
+    "idempotency_key": "fact:crowd:gm-east:2026-10-10T20:05",
+    "payload": {
+      "zone_id": "z-museum-hall",
+      "reading_kind": "gate_actual",
+      "gate_id": "gm-east",
+      "value": 780,
+      "captured_at": "2026-10-10T20:05:00+08:00",
+      "coverage": { "scope": "zone_entrance", "description": "博物馆主入口东闸机，不含西侧无障碍通道", "window_end": "2026-10-10T20:05:00+08:00" }
+    }
+  },
+  {
+    "event_id": "e26",
+    "event_type": "CROWD_COUNT_REPORTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-museum-hall",
+    "occurred_at": "2026-10-10T20:06:00+08:00",
+    "version": 3,
+    "summary": "博物馆西闸机实数 410",
+    "source_system": "gate-museum-west",
+    "idempotency_key": "fact:crowd:gm-west:2026-10-10T20:06",
+    "payload": {
+      "zone_id": "z-museum-hall",
+      "reading_kind": "gate_actual",
+      "gate_id": "gm-west",
+      "value": 410,
+      "captured_at": "2026-10-10T20:06:00+08:00",
+      "coverage": { "scope": "zone_entrance", "description": "博物馆团体入口西闸机" }
+    }
+  },
+  {
+    "event_id": "e27",
+    "event_type": "CROWD_COUNT_REPORTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-night-market",
+    "occurred_at": "2026-10-10T20:08:00+08:00",
+    "version": 2,
+    "summary": "夜市摄像头估算 4200 人（全街区）",
+    "source_system": "cam-grid",
+    "idempotency_key": "fact:crowd:market-cam:2026-10-10T20:08",
+    "payload": {
+      "zone_id": "z-night-market",
+      "reading_kind": "camera_estimate",
+      "value": 4200,
+      "captured_at": "2026-10-10T20:08:00+08:00",
+      "confidence": 0.7,
+      "coverage": { "scope": "zone_full", "description": "河夜市全街区摄像头密度估算，含临摊通道，不含周边背街" }
+    }
+  },
+  {
+    "event_id": "e28",
+    "event_type": "CROWD_COUNT_REPORTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-night-market",
+    "occurred_at": "2026-10-10T20:12:00+08:00",
+    "version": 3,
+    "summary": "客流模型预测 21:30 夜市达 6100 人（预测值，非实测）",
+    "source_system": "cam-grid",
+    "payload": {
+      "zone_id": "z-night-market",
+      "reading_kind": "forecast",
+      "value": 6100,
+      "forecast_for": "2026-10-10T21:30:00+08:00",
+      "confidence": 0.82,
+      "coverage": { "scope": "zone_full", "description": "基于在册临摊与历史同档位周末的模型外推，覆盖全街区" }
+    }
+  },
+  {
+    "event_id": "e29",
+    "event_type": "ALERT_RAISED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-thunder-1010",
+    "occurred_at": "2026-10-10T20:15:00+08:00",
+    "version": 1,
+    "summary": "气象台发布北山雷雨关注（watch），影响集结区与山脊点",
+    "source_system": "weather-bureau",
+    "idempotency_key": "fact:alert:alert-thunder-1010:raised",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "alert_id": "alert-thunder-1010",
+      "category": "weather_thunder",
+      "severity": "watch",
+      "zone_ids": ["z-forest-star", "z-forest-ridge"],
+      "message": "21:00 前后北山有雷阵雨并伴阵风，山脊开阔地带风险高"
+    }
+  },
+  {
+    "event_id": "e30",
+    "event_type": "ALERT_RAISED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-thunder-1010",
+    "occurred_at": "2026-10-10T20:15:00+08:00",
+    "received_at": "2026-10-10T20:25:00+08:00",
+    "version": 1,
+    "summary": "林站转报同一条北山雷雨关注（跨单位重复上报，与气象台记录折叠）",
+    "source_system": "forest-station",
+    "idempotency_key": "fact:alert:alert-thunder-1010:raised",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "alert_id": "alert-thunder-1010",
+      "category": "weather_thunder",
+      "severity": "watch",
+      "zone_ids": ["z-forest-star", "z-forest-ridge"],
+      "message": "21:00 前后北山有雷阵雨并伴阵风，山脊开阔地带风险高"
+    }
+  },
+  {
+    "event_id": "e31",
+    "event_type": "ALERT_RAISED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-wind-1010",
+    "occurred_at": "2026-10-10T20:22:00+08:00",
+    "version": 1,
+    "summary": "大风预警：林区阵风 7 级，临摊防风需检查",
+    "source_system": "weather-bureau",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "alert_id": "alert-wind-1010",
+      "category": "weather_wind",
+      "severity": "watch",
+      "zone_ids": ["z-forest-star", "z-forest-ridge", "z-night-market"],
+      "message": "阵风可达 7 级，舞台桁架与临摊篷布需加固"
+    }
+  },
+  {
+    "event_id": "e32",
+    "event_type": "ALERT_RAISED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-wildlife-1010",
+    "occurred_at": "2026-10-10T20:25:00+08:00",
+    "version": 1,
+    "summary": "生态巡护发现敏感物种原麝在山脊点附近活动，要求撤离该观察点",
+    "source_system": "eco-ranger",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "alert_id": "alert-wildlife-1010",
+      "category": "wildlife_sensitive_species",
+      "severity": "advisory",
+      "zone_ids": ["z-forest-ridge"],
+      "species": "原麝（国家一级保护动物）",
+      "message": "山脊林缘发现原麝觅食轨迹与个体，观星路线须避开，禁止强光照射与靠近"
+    }
+  },
+  {
+    "event_id": "e33",
+    "event_type": "DECISION_MADE",
+    "aggregate_type": "operational_decision",
+    "aggregate_id": "dec-star-shorten",
+    "occurred_at": "2026-10-10T20:30:00+08:00",
+    "version": 1,
+    "summary": "值班长决定观星场缩线：撤下山脊点，只保留集结区观测",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "decision_type": "shorten_route",
+      "rationale": "雷雨云团逼近且山脊点出现敏感物种，按自然观察优先规则先缩线，等待天气进一步研判",
+      "based_on": ["e29", "e32"]
+    }
+  },
+  {
+    "event_id": "e34",
+    "event_type": "ROUTE_SHORTENED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-stargazing",
+    "occurred_at": "2026-10-10T20:32:00+08:00",
+    "version": 4,
+    "summary": "观星路线缩线，撤下 wp-ridge 山脊点",
+    "source_system": "forest-station",
+    "correlation_id": "corr-night-1010",
+    "causation_id": "e33",
+    "payload": {
+      "experience_id": "exp-stargazing",
+      "session_id": "ses-star-1010",
+      "dropped_waypoints": ["wp-ridge"],
+      "reason_alert_ids": ["alert-thunder-1010", "alert-wildlife-1010"]
+    }  },
+  {
+    "event_id": "e35",
+    "event_type": "DIRECTIVE_ISSUED",
+    "aggregate_type": "audience_directive",
+    "aggregate_id": "dir-star-2035",
+    "occurred_at": "2026-10-10T20:35:00+08:00",
+    "version": 1,
+    "summary": "观星缩线分群指令：山上队伍撤回集结区，未出发团队暂缓发车",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "based_on": ["e34"],
+      "requires_action_from": ["forest-station"],
+      "audience": [
+        { "segment": "onsite", "action": "shorten_route", "message": "已在北山的观星队伍听从护林员引导，立即从山脊撤至集结区，不得使用强光手电照射林缘" },
+        { "segment": "not_departed", "action": "hold_departure", "message": "尚未从县城出发的观星团队暂缓发车，在家等待改约或取消通知，不要自行前往北山入口" }
+      ]
+    }
+  },
+  {
+    "event_id": "e36",
+    "event_type": "BOUNDARY_MEASURED",
+    "aggregate_type": "site_boundary",
+    "aggregate_id": "bnd-forest-edge",
+    "occurred_at": "2026-10-10T20:40:00+08:00",
+    "version": 2,
+    "summary": "林区侧实测 61 分贝，超过 55 分贝边界（夜市音响方向）",
+    "source_system": "eco-ranger",
+    "correlation_id": "corr-night-1010",
+    "payload": { "zone_id": "z-forest-star", "measured_db": 61, "limit_db": 55, "source_direction": "河夜市方向" }
+  },
+  {
+    "event_id": "e37",
+    "event_type": "ALERT_UPDATED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-thunder-1010",
+    "occurred_at": "2026-10-10T20:50:00+08:00",
+    "version": 2,
+    "summary": "雷雨预警升级为 warning，21:10 降雨带到达北山",
+    "source_system": "weather-bureau",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "alert_id": "alert-thunder-1010",
+      "category": "weather_thunder",
+      "severity": "warning",
+      "zone_ids": ["z-forest-star", "z-forest-ridge"],
+      "message": "雷暴回波加强，开阔山脊存在直击雷风险"
+    }
+  },
+  {
+    "event_id": "e38",
+    "event_type": "DECISION_MADE",
+    "aggregate_type": "operational_decision",
+    "aggregate_id": "dec-star-cancel",
+    "occurred_at": "2026-10-10T20:53:00+08:00",
+    "version": 1,
+    "summary": "值班长决定取消当晚观星场并启动林区疏散",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "decision_type": "cancel_session_and_evacuate",
+      "rationale": "雷雨升级为 warning，缩线已不足以保证山脊与集结区安全，按优先规则取消并疏散",
+      "based_on": ["e37"]
+    }
+  },
+  {
+    "event_id": "e39",
+    "event_type": "SESSION_CANCELLED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-stargazing",
+    "occurred_at": "2026-10-10T20:55:00+08:00",
+    "version": 5,
+    "summary": "观星场取消，仅释放观星两分区容量；博物馆、非遗、夜市不受影响，其核销票仍然有效",
+    "source_system": "forest-station",
+    "correlation_id": "corr-night-1010",
+    "causation_id": "e38",
+    "payload": {
+      "session_id": "ses-star-1010",
+      "experience_id": "exp-stargazing",
+      "released_zone_ids": ["z-forest-star", "z-forest-ridge"],
+      "reason": "雷雨预警升级与敏感物种保护，依自然观察优先规则取消"
+    }
+  },
+  {
+    "event_id": "e40",
+    "event_type": "EVACUATION_ACTIVATED",
+    "aggregate_type": "evacuation_plan",
+    "aggregate_id": "evp-county-night",
+    "occurred_at": "2026-10-10T20:56:00+08:00",
+    "version": 2,
+    "summary": "林区两分区启动疏散预案",
+    "source_system": "fire-rescue",
+    "correlation_id": "corr-night-1010",
+    "causation_id": "e38",
+    "payload": { "plan_id": "evp-county-night", "zone_ids": ["z-forest-star", "z-forest-ridge"], "reason": "雷雨预警 warning（依据 e37）" }
+  },
+  {
+    "event_id": "e41",
+    "event_type": "DIRECTIVE_ISSUED",
+    "aggregate_type": "audience_directive",
+    "aggregate_id": "dir-star-2058",
+    "occurred_at": "2026-10-10T20:58:00+08:00",
+    "version": 1,
+    "summary": "取消后分群指令：山上按预案撤离到停车场，未出发者停止前往",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "based_on": ["e39", "e37"],
+      "requires_action_from": ["forest-station", "fire-rescue"],
+      "audience": [
+        { "segment": "onsite", "action": "evacuate", "message": "所有在山游客沿 r-ridge-down、r-star-bus 路线撤至游客中心停车场，听从护林员与消防员指挥，不要在树下避雨" },
+        { "segment": "not_departed", "action": "hold_departure", "message": "今晚观星已取消，未出发游客请勿前往北山，票将按渠道通知退改" }
+      ]
+    }
+  },
+  {
+    "event_id": "e42",
+    "event_type": "CROWD_COUNT_REPORTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-metro-exit",
+    "occurred_at": "2026-10-10T21:00:00+08:00",
+    "version": 2,
+    "summary": "地铁 B 口闸机实数 2100，超过集散区容量 2000",
+    "source_system": "gate-metro",
+    "idempotency_key": "fact:crowd:gm-metro:2026-10-10T21:00",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "zone_id": "z-metro-exit",
+      "reading_kind": "gate_actual",
+      "gate_id": "gm-metro",
+      "value": 2100,
+      "captured_at": "2026-10-10T21:00:00+08:00",
+      "coverage": { "scope": "zone_entrance", "description": "地铁 B 口出站闸机计数，不含地面公交与网约车下客点" }
+    }
+  },
+  {
+    "event_id": "e43",
+    "event_type": "CROWD_COUNT_REPORTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-museum-hall",
+    "occurred_at": "2026-10-10T21:04:00+08:00",
+    "version": 4,
+    "summary": "博物馆东闸机实数升至 830，两闸机合计 1240 超容量",
+    "source_system": "gate-museum-east",
+    "idempotency_key": "fact:crowd:gm-east:2026-10-10T21:04",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "zone_id": "z-museum-hall",
+      "reading_kind": "gate_actual",
+      "gate_id": "gm-east",
+      "value": 830,
+      "captured_at": "2026-10-10T21:04:00+08:00",
+      "coverage": { "scope": "zone_entrance", "description": "博物馆主入口东闸机，不含西侧无障碍通道" }
+    }
+  },
+  {
+    "event_id": "e44",
+    "event_type": "CROWD_COUNT_REPORTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-night-market",
+    "occurred_at": "2026-10-10T21:05:00+08:00",
+    "version": 4,
+    "summary": "更正：20:08 摄像头估算标定错误，实际 3050 人（后继记录替代 e27）",
+    "source_system": "cam-grid",
+    "correlation_id": "corr-night-1010",
+    "supersedes": "e27",
+    "payload": {
+      "zone_id": "z-night-market",
+      "reading_kind": "camera_estimate",
+      "value": 3050,
+      "captured_at": "2026-10-10T20:08:00+08:00",
+      "confidence": 0.88,
+      "coverage": { "scope": "zone_full", "description": "河夜市全街区摄像头密度估算（重新标定后），含临摊通道，不含周边背街" },
+      "correction_note": "原估算把一段封闭施工区误计为人群，更正后未达限流阈值"
+    }
+  },
+  {
+    "event_id": "e45",
+    "event_type": "INCIDENT_REPORTED",
+    "aggregate_type": "field_incident",
+    "aggregate_id": "inc-congest-metro",
+    "occurred_at": "2026-10-10T21:08:00+08:00",
+    "version": 1,
+    "summary": "地铁 B 口外出现拥堵，游客排队占用非机动车道",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "incident_id": "inc-congest-metro",
+      "category": "crowd_congestion",
+      "zone_id": "z-metro-exit",
+      "description": "出站客流与夜市入场客流对冲，约 300 人排队挤占非机动车道",
+      "evidence_ids": ["e42"]
+    }
+  },
+  {
+    "event_id": "e46",
+    "event_type": "ZONE_RESTRICTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-metro-exit",
+    "occurred_at": "2026-10-10T21:10:00+08:00",
+    "version": 3,
+    "summary": "地铁口集散区截留放行，开放临时导流护栏",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": { "zone_id": "z-metro-exit", "restriction": "hold_and_release", "reason": "闸机实数 2100 超容量且现场拥堵（依据 e42、e45）", "reason_event_ids": ["e42", "e45"] }
+  },
+  {
+    "event_id": "e47",
+    "event_type": "DECISION_MADE",
+    "aggregate_type": "operational_decision",
+    "aggregate_id": "dec-metro-release",
+    "occurred_at": "2026-10-10T21:11:00+08:00",
+    "version": 1,
+    "summary": "决定地铁口截留放行并加派引导员",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "decision_type": "hold_and_release",
+      "rationale": "闸机实数超容量且出现拥堵事件，先控制出站口放行节奏，再研判接驳",
+      "based_on": ["e42", "e45"]
+    }
+  },
+  {
+    "event_id": "e48",
+    "event_type": "ZONE_RESTRICTED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-museum-hall",
+    "occurred_at": "2026-10-10T21:12:00+08:00",
+    "version": 5,
+    "summary": "博物馆停止检票入场",
+    "source_system": "museum-ops",
+    "correlation_id": "corr-night-1010",
+    "payload": { "zone_id": "z-museum-hall", "restriction": "stop_entry", "reason": "两闸机实数合计 1240，超过容量 1200（依据 e43、e26）", "reason_event_ids": ["e43", "e26"] }
+  },
+  {
+    "event_id": "e49",
+    "event_type": "DECISION_MADE",
+    "aggregate_type": "operational_decision",
+    "aggregate_id": "dec-museum-restrict",
+    "occurred_at": "2026-10-10T21:13:00+08:00",
+    "version": 1,
+    "summary": "决定博物馆停止检票，已入场观众正常参观",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "decision_type": "stop_entry",
+      "rationale": "限流决定只采信闸机实数；夜市预测值已被更正，未对夜市采取限流",
+      "based_on": ["e43", "e26", "e44"]
+    }
+  },
+  {
+    "event_id": "e50",
+    "event_type": "DIRECTIVE_ISSUED",
+    "aggregate_type": "audience_directive",
+    "aggregate_id": "dir-museum-2114",
+    "occurred_at": "2026-10-10T21:14:00+08:00",
+    "version": 1,
+    "summary": "博物馆限流指令只面向尚未出发人群",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "based_on": ["e49"],
+      "requires_action_from": ["museum-ops"],
+      "audience": [
+        { "segment": "not_departed", "action": "stop_entry", "message": "博物馆夜场当前已满，请暂缓出发，可在购票平台改约明晚或转场非遗夜戏、河夜市" }
+      ]
+    }
+  },
+  {
+    "event_id": "e51",
+    "event_type": "INCIDENT_REPORTED",
+    "aggregate_type": "field_incident",
+    "aggregate_id": "inc-her-audio",
+    "occurred_at": "2026-10-10T21:16:00+08:00",
+    "version": 1,
+    "summary": "非遗舞台主功放故障，演出中断",
+    "source_system": "heritage-troupe",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "incident_id": "inc-her-audio",
+      "category": "equipment_failure",
+      "zone_id": "z-heritage-stage",
+      "description": "主功放冒烟自保，第二场皮影戏无法开演，预计 30 分钟抢修"
+    }
+  },
+  {
+    "event_id": "e52",
+    "event_type": "DECISION_MADE",
+    "aggregate_type": "operational_decision",
+    "aggregate_id": "dec-her-suspend",
+    "occurred_at": "2026-10-10T21:19:00+08:00",
+    "version": 1,
+    "summary": "决定非遗第二场临时停演，只停用舞台区并登记退票",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "decision_type": "suspend_session",
+      "rationale": "演出团自有设备故障，属主办方责任；停演仅释放舞台区，不影响其他体验及已核销的博物馆/观星票",
+      "based_on": ["e51"]
+    }
+  },
+  {
+    "event_id": "e53",
+    "event_type": "SESSION_SUSPENDED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-heritage",
+    "occurred_at": "2026-10-10T21:20:00+08:00",
+    "version": 4,
+    "summary": "非遗第二场临时停演，仅释放非遗舞台区容量",
+    "source_system": "heritage-troupe",
+    "correlation_id": "corr-night-1010",
+    "causation_id": "e52",
+    "payload": {
+      "session_id": "ses-her-1930",
+      "experience_id": "exp-heritage",
+      "released_zone_ids": ["z-heritage-stage"],
+      "reason": "主功放故障（inc-her-audio），抢修后视情况复演"
+    }
+  },
+  {
+    "event_id": "e54",
+    "event_type": "DIRECTIVE_ISSUED",
+    "aggregate_type": "audience_directive",
+    "aggregate_id": "dir-her-2125",
+    "occurred_at": "2026-10-10T21:25:00+08:00",
+    "version": 1,
+    "summary": "停演观众处置指令：在场登记退票可转场，未出发者不要前来",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "visibility": "partner:heritage-troupe",
+    "payload": {
+      "based_on": ["e53"],
+      "requires_action_from": ["heritage-troupe"],
+      "audience": [
+        { "segment": "onsite", "action": "divert", "message": "已入场观众请在舞台东侧登记处凭核销记录登记退票，可步行转场博物馆夜场或河夜市" },
+        { "segment": "not_departed", "action": "hold_departure", "message": "非遗第二场临时停演，请暂缓出发，退票通道将于 22:00 前开放" }
+      ]
+    }
+  },
+  {
+    "event_id": "e55",
+    "event_type": "TRANSIT_DEPARTURE_REPORTED",
+    "aggregate_type": "transit_service",
+    "aggregate_id": "svc-metro-2",
+    "occurred_at": "2026-10-10T21:32:00+08:00",
+    "version": 3,
+    "summary": "21:30 次班实际发车，上车 1850 人超计划运力 1800",
+    "source_system": "metro-ops",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "service_id": "svc-metro-2",
+      "departs_at": "2026-10-10T21:30:00+08:00",
+      "boarding_count": 1850,
+      "coverage": { "scope": "transit_boarding", "description": "B 口站台进站计数" }
+    }
+  },
+  {
+    "event_id": "e56",
+    "event_type": "INCIDENT_ACKNOWLEDGED",
+    "aggregate_type": "field_incident",
+    "aggregate_id": "inc-congest-metro",
+    "occurred_at": "2026-10-10T21:34:00+08:00",
+    "version": 2,
+    "summary": "现场交警与城管到场接管疏导",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": { "incident_id": "inc-congest-metro", "ack_team": "交警一中队、夜市城管组" }
+  },
+  {
+    "event_id": "e57",
+    "event_type": "INCIDENT_REPORTED",
+    "aggregate_type": "field_incident",
+    "aggregate_id": "inc-noise-complaint",
+    "occurred_at": "2026-10-10T21:36:00+08:00",
+    "version": 1,
+    "summary": "林缘民宿投诉夜市音响扰民，与 61 分贝实测吻合",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "incident_id": "inc-noise-complaint",
+      "category": "noise_complaint",
+      "zone_id": "z-forest-star",
+      "description": "民宿称 20:30 起低音持续；边界实测 61 分贝超限（依据 e36）",
+      "evidence_ids": ["e36"]
+    }
+  },
+  {
+    "event_id": "e58",
+    "event_type": "DECISION_MADE",
+    "aggregate_type": "operational_decision",
+    "aggregate_id": "dec-add-shuttle",
+    "occurred_at": "2026-10-10T21:40:00+08:00",
+    "version": 1,
+    "summary": "决定增开两班接驳大巴，覆盖末班提前产生的返程缺口",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "decision_type": "add_shuttle",
+      "rationale": "地铁末班提前至 22:15，21:30 次班已超员，且地铁口仍在截留放行，需要公路接驳分流",
+      "based_on": ["e24", "e55", "e45"]
+    }
+  },
+  {
+    "event_id": "e59",
+    "event_type": "SHUTTLE_SERVICE_ADDED",
+    "aggregate_type": "transit_service",
+    "aggregate_id": "svc-shuttle-forest",
+    "occurred_at": "2026-10-10T21:42:00+08:00",
+    "version": 2,
+    "summary": "增开 22:20、22:45 两班接驳大巴至客运中心",
+    "source_system": "bus-co",
+    "correlation_id": "corr-night-1010",
+    "causation_id": "e58",
+    "payload": {
+      "service_id": "svc-shuttle-forest",
+      "reason_event_ids": ["e24", "e55"],
+      "departures": [
+        { "departs_at": "2026-10-10T22:20:00+08:00", "capacity": 45, "label": "地铁末班兜底接驳" },
+        { "departs_at": "2026-10-10T22:45:00+08:00", "capacity": 45, "label": "疏散返程接驳" }
+      ]
+    }
+  },
+  {
+    "event_id": "e60",
+    "event_type": "DIRECTIVE_ISSUED",
+    "aggregate_type": "audience_directive",
+    "aggregate_id": "dir-shuttle-2144",
+    "occurred_at": "2026-10-10T21:44:00+08:00",
+    "version": 1,
+    "summary": "点名客运公司执行增开接驳并引导在场游客前往上车点",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "visibility": "partner:bus-co",
+    "payload": {
+      "based_on": ["e59"],
+      "requires_action_from": ["bus-co"],
+      "audience": [
+        { "segment": "onsite", "action": "divert", "message": "地铁末班已提前，请需要返程的游客跟随引导牌到游客中心停车场乘坐 22:20、22:45 接驳大巴" }
+      ]
+    }
+  },
+  {
+    "event_id": "e61",
+    "event_type": "ALERT_CLEARED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-wildlife-1010",
+    "occurred_at": "2026-10-10T21:48:00+08:00",
+    "version": 2,
+    "summary": "原麝已离开观星区域返回深林，生态告警解除",
+    "source_system": "eco-ranger",
+    "correlation_id": "corr-night-1010",
+    "payload": { "alert_id": "alert-wildlife-1010", "cleared_reason": "红外相机确认个体远离游线" }
+  },
+  {
+    "event_id": "e62",
+    "event_type": "SESSION_RESUMED",
+    "aggregate_type": "experience",
+    "aggregate_id": "exp-heritage",
+    "occurred_at": "2026-10-10T21:55:00+08:00",
+    "version": 5,
+    "summary": "功放更换完成，非遗演出压缩复演至 22:10 结束",
+    "source_system": "heritage-troupe",
+    "correlation_id": "corr-night-1010",
+    "payload": { "session_id": "ses-her-1930", "experience_id": "exp-heritage", "note": "复演不撤销已登记的停演补偿案" }
+  },
+  {
+    "event_id": "e63",
+    "event_type": "COMPENSATION_OPENED",
+    "aggregate_type": "compensation_case",
+    "aggregate_id": "cmp-star-insurance",
+    "occurred_at": "2026-10-10T22:05:00+08:00",
+    "version": 1,
+    "summary": "观星取消补偿案立案：不可抗力，资金走活动公众责任险",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "causation_id": "e39",
+    "payload": {
+      "case_id": "cmp-star-insurance",
+      "experience_id": "exp-stargazing",
+      "responsibility": { "party": "force_majeure", "basis": "气象台雷雨预警升级（e37），属保险合同约定的不可抗力", "share": 1 },
+      "funding_source": "insurance",
+      "covered_redemption_ids": ["rd-star-001", "rd-star-002", "rd-star-003"]
+    }
+  },
+  {
+    "event_id": "e64",
+    "event_type": "COMPENSATION_OPENED",
+    "aggregate_type": "compensation_case",
+    "aggregate_id": "cmp-heritage-org",
+    "occurred_at": "2026-10-10T22:06:00+08:00",
+    "version": 1,
+    "summary": "非遗停演补偿案立案：演出团设备责任，资金由主办方承担",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "causation_id": "e53",
+    "visibility": "partner:heritage-troupe",
+    "payload": {
+      "case_id": "cmp-heritage-org",
+      "experience_id": "exp-heritage",
+      "responsibility": { "party": "heritage-troupe", "basis": "主功放故障导致第二场停演（inc-her-audio），演出团承担设备责任", "share": 1 },
+      "funding_source": "organizer",
+      "covered_redemption_ids": ["rd-her-001", "rd-her-002", "rd-her-003", "rd-her-004"]
+    }
+  },
+  {
+    "event_id": "e65",
+    "event_type": "ZONE_REOPENED",
+    "aggregate_type": "capacity_zone",
+    "aggregate_id": "z-metro-exit",
+    "occurred_at": "2026-10-10T22:10:00+08:00",
+    "version": 4,
+    "summary": "地铁口拥堵解除，恢复正常通行",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": { "zone_id": "z-metro-exit" }
+  },
+  {
+    "event_id": "e66",
+    "event_type": "INCIDENT_RESOLVED",
+    "aggregate_type": "field_incident",
+    "aggregate_id": "inc-congest-metro",
+    "occurred_at": "2026-10-10T22:12:00+08:00",
+    "version": 3,
+    "summary": "拥堵事件结案，无人员受伤",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": { "incident_id": "inc-congest-metro", "resolution": "截留放行加接驳分流后排队消散" }
+  },
+  {
+    "event_id": "e67",
+    "event_type": "TRANSIT_DEPARTURE_REPORTED",
+    "aggregate_type": "transit_service",
+    "aggregate_id": "svc-metro-2",
+    "occurred_at": "2026-10-10T22:18:00+08:00",
+    "version": 4,
+    "summary": "提前后的 22:15 末班实际发车，上车 980 人，站内无滞留",
+    "source_system": "metro-ops",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "service_id": "svc-metro-2",
+      "departs_at": "2026-10-10T22:15:00+08:00",
+      "boarding_count": 980,
+      "coverage": { "scope": "transit_boarding", "description": "B 口站台进站计数" }
+    }
+  },
+  {
+    "event_id": "e68",
+    "event_type": "ALERT_CLEARED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-thunder-1010",
+    "occurred_at": "2026-10-10T22:20:00+08:00",
+    "version": 3,
+    "summary": "雷雨云团移出北山，预警解除",
+    "source_system": "weather-bureau",
+    "correlation_id": "corr-night-1010",
+    "payload": { "alert_id": "alert-thunder-1010" }
+  },
+  {
+    "event_id": "e69",
+    "event_type": "ALERT_CLEARED",
+    "aggregate_type": "operational_alert",
+    "aggregate_id": "alert-wind-1010",
+    "occurred_at": "2026-10-10T22:22:00+08:00",
+    "version": 2,
+    "summary": "大风预警解除",
+    "source_system": "weather-bureau",
+    "correlation_id": "corr-night-1010",
+    "payload": { "alert_id": "alert-wind-1010" }
+  },
+  {
+    "event_id": "e70",
+    "event_type": "EVACUATION_STOOD_DOWN",
+    "aggregate_type": "evacuation_plan",
+    "aggregate_id": "evp-county-night",
+    "occurred_at": "2026-10-10T22:30:00+08:00",
+    "version": 3,
+    "summary": "全员抵达安全区域，林区疏散终止",
+    "source_system": "fire-rescue",
+    "correlation_id": "corr-night-1010",
+    "payload": { "plan_id": "evp-county-night", "headcount_confirmed": 86, "note": "含观星游客、护林员与演职人员，无人滞留" }
+  },
+  {
+    "event_id": "e71",
+    "event_type": "COMPENSATION_SETTLED",
+    "aggregate_type": "compensation_case",
+    "aggregate_id": "cmp-star-insurance",
+    "occurred_at": "2026-10-10T22:40:00+08:00",
+    "version": 2,
+    "summary": "保险赔付结清：3 张票共 360 元",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": {
+      "case_id": "cmp-star-insurance",
+      "experience_id": "exp-stargazing",
+      "responsibility": { "party": "force_majeure", "basis": "气象台雷雨预警升级（e37），属保险合同约定的不可抗力", "share": 1 },
+      "funding_source": "insurance",
+      "amount": 360,
+      "covered_redemption_ids": ["rd-star-001", "rd-star-002", "rd-star-003"]
+    }
+  },
+  {
+    "event_id": "e72",
+    "event_type": "COMPENSATION_SETTLED",
+    "aggregate_type": "compensation_case",
+    "aggregate_id": "cmp-heritage-org",
+    "occurred_at": "2026-10-10T22:42:00+08:00",
+    "version": 2,
+    "summary": "主办方赔付结清：4 张票共 320 元，与保险案分账记录",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "visibility": "partner:heritage-troupe",
+    "payload": {
+      "case_id": "cmp-heritage-org",
+      "experience_id": "exp-heritage",
+      "responsibility": { "party": "heritage-troupe", "basis": "主功放故障导致第二场停演（inc-her-audio），演出团承担设备责任", "share": 1 },
+      "funding_source": "organizer",
+      "amount": 320,
+      "covered_redemption_ids": ["rd-her-001", "rd-her-002", "rd-her-003", "rd-her-004"]
+    }
+  },
+  {
+    "event_id": "e73",
+    "event_type": "PARTICIPANT_CHECKED_OUT",
+    "aggregate_type": "participant",
+    "aggregate_id": "perf-troupe",
+    "occurred_at": "2026-10-10T23:10:00+08:00",
+    "version": 2,
+    "summary": "非遗演出团 12 人签退，故障功放封存待检",
+    "source_system": "heritage-troupe",
+    "payload": { "participant_id": "perf-troupe", "headcount": 12 }
+  },
+  {
+    "event_id": "e74",
+    "event_type": "RESPONSE_CLOSED",
+    "aggregate_type": "joint_response",
+    "aggregate_id": "resp-1010",
+    "occurred_at": "2026-10-10T23:20:00+08:00",
+    "version": 2,
+    "summary": "联合处置链路关闭，转入复盘",
+    "source_system": "duty-room",
+    "correlation_id": "corr-night-1010",
+    "payload": { "response_id": "resp-1010", "handoff": "复盘材料按 corr-night-1010 血缘整理" }
+  }
+]

@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "夜游联合运行中心领域事件",
+  "description": "信封约定：记录一经接收，event_id、occurred_at、version 不得原地改写；更正或补充必须以 supersedes 指向原记录的新后继记录提交。各单位重复上报通过 idempotency_key 与载荷指纹识别。客流读数必须在 payload 中注明读数性质与覆盖范围，预测值不得标注为闸机实数。",
   "type": "object",
   "required": [
     "event_id",
@@ -9,30 +10,75 @@
     "aggregate_id",
     "occurred_at",
     "version",
-    "summary"
+    "summary",
+    "source_system"
   ],
   "properties": {
     "event_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "记录唯一标识，接收后不可改写"
     },
     "event_type": {
       "type": "string",
       "enum": [
         "PROGRAM_CLEARED",
+        "EXPERIENCE_REGISTERED",
+        "SESSION_SCHEDULED",
+        "TICKETS_REDEEMED",
+        "ROUTE_SHORTENED",
+        "SESSION_SUSPENDED",
+        "SESSION_CANCELLED",
+        "SESSION_RESUMED",
+        "VENDOR_CHECKED_IN",
+        "PERFORMER_CHECKED_IN",
+        "PARTICIPANT_CHECKED_OUT",
+        "ZONE_REGISTERED",
         "CAPACITY_OBSERVED",
-        "ALERT_RAISED",
+        "CROWD_COUNT_REPORTED",
         "ZONE_RESTRICTED",
-        "RESPONSE_CLOSED"
+        "ZONE_REOPENED",
+        "TRANSIT_SCHEDULED",
+        "TRANSIT_DEPARTURE_REPORTED",
+        "TRANSIT_LAST_SERVICE_CHANGED",
+        "SHUTTLE_SERVICE_ADDED",
+        "ALERT_RAISED",
+        "ALERT_UPDATED",
+        "ALERT_CLEARED",
+        "BOUNDARY_RULE_PUBLISHED",
+        "BOUNDARY_MEASURED",
+        "EVACUATION_PLAN_PUBLISHED",
+        "EVACUATION_ACTIVATED",
+        "EVACUATION_STOOD_DOWN",
+        "INCIDENT_REPORTED",
+        "INCIDENT_ACKNOWLEDGED",
+        "INCIDENT_RESOLVED",
+        "DECISION_MADE",
+        "DECISION_REVISED",
+        "DIRECTIVE_ISSUED",
+        "DIRECTIVE_WITHDRAWN",
+        "RESPONSE_OPENED",
+        "RESPONSE_CLOSED",
+        "COMPENSATION_OPENED",
+        "COMPENSATION_SETTLED"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
         "night_program",
+        "experience",
+        "participant",
         "capacity_zone",
+        "transit_service",
         "operational_alert",
-        "joint_response"
+        "site_boundary",
+        "evacuation_plan",
+        "field_incident",
+        "operational_decision",
+        "audience_directive",
+        "joint_response",
+        "compensation_case"
       ]
     },
     "aggregate_id": {
@@ -41,16 +87,122 @@
     },
     "occurred_at": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "事实实际发生时间，接收后不可改写；事后更正只能追加后继记录"
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "联合运行中心接收时间，用于识别延迟与重复上报"
     },
     "version": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 1,
+      "description": "同一 aggregate_id 下严格递增；后继记录版本号必须更大"
     },
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "source_system": {
+      "type": "string",
+      "minLength": 1,
+      "description": "报送单位或系统标识，如 metro-ops、duty-room、gate-g1、forest-station"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "同一客观事实的自然键，不同单位重复上报应携带相同键；键相同而内容不一致时必须以后继记录更正"
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "一次告警/处置链路的关联标识，复盘按此串联"
+    },
+    "causation_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "触发本记录的上游记录 event_id，形成决策血缘"
+    },
+    "supersedes": {
+      "type": "string",
+      "minLength": 1,
+      "description": "本记录更正/替代的原记录 event_id，二者必须属于同一聚合"
+    },
+    "visibility": {
+      "description": "可见范围：joint_center 为值班内部；partner:<单位标识> 仅该合作方可见。合作方视图只返回其自有资源与点名处置要求。",
+      "oneOf": [
+        {
+          "const": "joint_center"
+        },
+        {
+          "type": "string",
+          "pattern": "^partner:[A-Za-z0-9_.-]+"
+        }
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "description": "按 event_type 区分的业务字段，关键结构由 src/validator.js 强制：客流读数（reading_kind/coverage/forecast_for）、告警类别、停演释放分区、分群指令、补偿责任与资金来源等。"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false,
+  "$defs": {
+    "crowd_reading": {
+      "type": "object",
+      "description": "客流读数。reading_kind=gate_actual 为闸机实数且必须带 gate_id；forecast 为预测值且必须带 forecast_for，禁止把预测写入实数字段。coverage 标明覆盖范围。",
+      "required": ["zone_id", "reading_kind", "coverage", "value"],
+      "properties": {
+        "zone_id": { "type": "string" },
+        "reading_kind": {
+          "type": "string",
+          "enum": ["gate_actual", "camera_estimate", "manual_count", "forecast"]
+        },
+        "coverage": {
+          "type": "object",
+          "required": ["scope", "description"],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "enum": ["zone_entrance", "zone_full", "route_segment", "transit_boarding"]
+            },
+            "description": { "type": "string" },
+            "window_start": { "type": "string", "format": "date-time" },
+            "window_end": { "type": "string", "format": "date-time" }
+          }
+        },
+        "value": { "type": "integer", "minimum": 0 },
+        "gate_id": { "type": "string" },
+        "captured_at": { "type": "string", "format": "date-time" },
+        "forecast_for": { "type": "string", "format": "date-time" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "compensation": {
+      "type": "object",
+      "description": "补偿按责任与资金来源分别立案；临时停演仅覆盖本体验已核销票，不得连带其他体验。",
+      "required": ["experience_id", "responsibility", "funding_source"],
+      "properties": {
+        "experience_id": { "type": "string" },
+        "responsibility": {
+          "type": "object",
+          "required": ["party", "basis"],
+          "properties": {
+            "party": { "type": "string" },
+            "basis": { "type": "string" },
+            "share": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "funding_source": {
+          "type": "string",
+          "enum": ["insurance", "organizer", "venue_operator", "government_fiscal", "partner"]
+        },
+        "amount": { "type": "number", "minimum": 0 },
+        "covered_redemption_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
 }

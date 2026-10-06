@@ -4,6 +4,12 @@
   "aggregate_type": "night_program",
   "aggregate_id": "night_tour_operations-001",
   "occurred_at": "2026-09-20T18:00:00+08:00",
+  "received_at": "2026-09-20T18:00:05+08:00",
   "version": 1,
-  "summary": "登记夜游联合运行中心的首条领域记录"
+  "summary": "登记夜游联合运行中心的首条领域记录",
+  "source_system": "duty-room",
+  "payload": {
+    "permit_no": "示例许可-001",
+    "conditions": "客流读数须标明覆盖范围与读数性质；预测值不得标注为闸机实数"
+  }
 }
