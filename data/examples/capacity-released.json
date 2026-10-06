@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-2026-10-10-016",
+  "event_type": "CAPACITY_RELEASED",
+  "aggregate_type": "capacity_zone",
+  "aggregate_id": "night-market-stage",
+  "occurred_at": "2026-10-10T20:51:00+08:00",
+  "version": 1,
+  "summary": "夜市舞台区释放容量 800，对应 20:30 停演场次",
+  "payload": {
+    "zone_id": "night-market-stage",
+    "released_by_event_id": "evt-2026-10-10-015",
+    "released": 800
+  }
+}

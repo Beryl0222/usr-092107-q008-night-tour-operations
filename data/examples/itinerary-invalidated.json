@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-2026-10-10-020",
+  "event_type": "ITINERARY_INVALIDATED",
+  "aggregate_type": "visitor_itinerary",
+  "aggregate_id": "iti-88213",
+  "occurred_at": "2026-10-10T20:24:00+08:00",
+  "version": 1,
+  "summary": "博物馆夜场+观星联程因观星缩线失效，为游客改退观星段",
+  "payload": {
+    "cause_event_id": "evt-2026-10-10-010",
+    "affected_segments": ["stargazing-2026-10-10"],
+    "note": "博物馆夜场段已核销，保留有效"
+  }
+}

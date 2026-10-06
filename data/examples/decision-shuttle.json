@@ -1,0 +1,17 @@
+{
+  "event_id": "evt-2026-10-10-018",
+  "event_type": "SHUTTLE_ADDED",
+  "aggregate_type": "joint_response",
+  "aggregate_id": "resp-2026-10-10-03",
+  "occurred_at": "2026-10-10T21:20:00+08:00",
+  "version": 1,
+  "summary": "依据老城客流预测与实测，增开博物馆广场—夜市接驳 6 班",
+  "basis_event_ids": ["evt-2026-10-10-007", "evt-2026-10-10-008"],
+  "visibility": "partner",
+  "partner_id": "县公交公司",
+  "payload": {
+    "route": "博物馆广场—夜市",
+    "extra_trips": 6,
+    "window": "21:30-23:30"
+  }
+}

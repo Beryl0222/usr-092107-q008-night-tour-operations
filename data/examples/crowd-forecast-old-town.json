@@ -1,0 +1,19 @@
+{
+  "event_id": "evt-2026-10-10-007",
+  "event_type": "CROWD_COUNTED",
+  "aggregate_type": "crowd_measurement",
+  "aggregate_id": "old-town-forecast-2026-10-10-2100",
+  "occurred_at": "2026-10-10T19:30:00+08:00",
+  "version": 1,
+  "summary": "预测老城核心 21:00-22:00 在场约 9500 人（模型值，非闸机实数）",
+  "reported_by": "运行中心研判席",
+  "report_key": "FC-2026-10-10-2100",
+  "payload": {
+    "coverage_scope": "zone_full",
+    "data_kind": "forecast",
+    "model_ref": "crowd-model-v4",
+    "valid_until": "2026-10-10T21:30:00+08:00",
+    "count": 9500,
+    "window": "21:00-22:00"
+  }
+}

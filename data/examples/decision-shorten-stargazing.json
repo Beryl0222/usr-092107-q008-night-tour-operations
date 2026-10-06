@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-2026-10-10-010",
+  "event_type": "ROUTE_SHORTENED",
+  "aggregate_type": "joint_response",
+  "aggregate_id": "resp-2026-10-10-01",
+  "occurred_at": "2026-10-10T20:20:00+08:00",
+  "version": 1,
+  "summary": "因雷雨大风预警，观星路线缩短至山腰平台，取消山顶段",
+  "basis_event_ids": ["evt-2026-10-10-009"],
+  "payload": {
+    "trigger_alert_id": "evt-2026-10-10-009",
+    "program_id": "stargazing-2026-10-10",
+    "new_route": "缩短至山腰平台，取消山顶段"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-2026-10-10-008",
+  "event_type": "CAPACITY_OBSERVED",
+  "aggregate_type": "capacity_zone",
+  "aggregate_id": "old-town-core",
+  "occurred_at": "2026-10-10T20:40:00+08:00",
+  "version": 1,
+  "summary": "老城核心区在场约 12800 人，达到容量上限的 85%",
+  "payload": {
+    "observed": 12800,
+    "limit": 15000,
+    "ratio": 0.85
+  }
+}

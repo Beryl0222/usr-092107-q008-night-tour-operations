@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-2026-10-10-019",
+  "event_type": "FLOW_THROTTLED",
+  "aggregate_type": "joint_response",
+  "aggregate_id": "resp-2026-10-10-04",
+  "occurred_at": "2026-10-10T20:45:00+08:00",
+  "version": 1,
+  "summary": "老城核心区达容量 85%，入口暂缓放行 15 分钟",
+  "basis_event_ids": ["evt-2026-10-10-008"],
+  "payload": {
+    "zone_id": "old-town-core",
+    "action": "入口暂缓放行 15 分钟，视在场数回落情况解除"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-2026-10-10-001",
+  "event_type": "PERMIT_GRANTED",
+  "aggregate_type": "night_program",
+  "aggregate_id": "stargazing-2026-10-10",
+  "occurred_at": "2026-10-08T10:00:00+08:00",
+  "version": 1,
+  "summary": "山野观星活动许可登记：西山林区观测点，10 月 10 日晚两场",
+  "payload": {
+    "permit_id": "WL-2026-1017",
+    "program_kind": "stargazing",
+    "site": "西山林区观测点",
+    "valid_window": "2026-10-10T19:00:00+08:00/2026-10-10T23:00:00+08:00"
+  }
+}

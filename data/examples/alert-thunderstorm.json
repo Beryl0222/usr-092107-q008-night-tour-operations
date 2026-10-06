@@ -1,0 +1,17 @@
+{
+  "event_id": "evt-2026-10-10-009",
+  "event_type": "ALERT_RAISED",
+  "aggregate_type": "operational_alert",
+  "aggregate_id": "wx-2026-10-10-01",
+  "occurred_at": "2026-10-10T20:10:00+08:00",
+  "version": 1,
+  "summary": "县气象局发布西山林区雷雨大风预警，预计一小时后影响观测点",
+  "reported_by": "县气象局",
+  "report_key": "QX-2026-10-10-031",
+  "payload": {
+    "alert_kind": "weather_thunderstorm",
+    "severity": "warning",
+    "area": "西山林区",
+    "lead_minutes": 60
+  }
+}

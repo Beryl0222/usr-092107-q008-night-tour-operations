@@ -1,0 +1,13 @@
+{
+  "event_id": "evt-2026-10-10-004",
+  "event_type": "PLAN_PUBLISHED",
+  "aggregate_type": "evacuation_plan",
+  "aggregate_id": "evac-old-town",
+  "occurred_at": "2026-10-09T15:00:00+08:00",
+  "version": 1,
+  "summary": "发布老城片区疏散预案 v3.2，覆盖老城核心、夜市与博物馆广场",
+  "payload": {
+    "plan_version": "v3.2",
+    "zones": ["old-town-core", "night-market", "museum-plaza"]
+  }
+}

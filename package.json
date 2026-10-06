@@ -1,9 +1,9 @@
 {
   "name": "night-tour-operations",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "领域事件基础校验",
+  "description": "夜游联合运行中心领域事件约定与校验",
   "scripts": {
     "test": "node --test"
   }

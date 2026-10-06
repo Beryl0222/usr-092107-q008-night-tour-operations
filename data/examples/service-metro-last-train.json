@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-2026-10-10-003",
+  "event_type": "SERVICE_CHANGED",
+  "aggregate_type": "transport_service",
+  "aggregate_id": "metro-line-3",
+  "occurred_at": "2026-10-09T12:00:00+08:00",
+  "version": 1,
+  "summary": "地铁 3 号线周末末班车双向延至 23:30",
+  "payload": {
+    "service_kind": "metro",
+    "change": "末班车双向由 22:45 延至 23:30",
+    "effective": "2026-10-10"
+  }
+}

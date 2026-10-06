@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-2026-10-10-011",
+  "event_type": "DIRECTIVE_ISSUED",
+  "aggregate_type": "joint_response",
+  "aggregate_id": "resp-2026-10-10-01",
+  "occurred_at": "2026-10-10T20:22:00+08:00",
+  "version": 1,
+  "summary": "对已入场观星游客：撤至山腰平台避雨，沿缩短后路线返回",
+  "payload": {
+    "audience_segment": "entered",
+    "instruction": "已入场游客请随引导员撤至山腰平台避雨，沿缩短后路线返回，勿前往山顶段",
+    "channel": "现场广播与带队群"
+  }
+}

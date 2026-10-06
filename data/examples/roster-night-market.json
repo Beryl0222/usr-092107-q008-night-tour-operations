@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-2026-10-10-005",
+  "event_type": "ROSTER_CHECKED_IN",
+  "aggregate_type": "participant_roster",
+  "aggregate_id": "night-market-2026-10-10",
+  "occurred_at": "2026-10-10T16:30:00+08:00",
+  "version": 1,
+  "summary": "夜市商户报到 46 家（含临时摊位 12 家）",
+  "reported_by": "夜市管理公司",
+  "report_key": "NM-ROSTER-2026-10-10-01",
+  "payload": {
+    "role": "merchant",
+    "count": 46
+  }
+}

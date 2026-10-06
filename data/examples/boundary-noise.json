@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-2026-10-10-002",
+  "event_type": "BOUNDARY_SET",
+  "aggregate_type": "environment_boundary",
+  "aggregate_id": "noise-old-town",
+  "occurred_at": "2026-10-09T09:00:00+08:00",
+  "version": 1,
+  "summary": "设定老城片区噪声边界：22 时至次日 6 时不超过 55 分贝",
+  "payload": {
+    "boundary_kind": "noise",
+    "active_window": "22:00-06:00",
+    "limit_db": 55,
+    "note": "临近野生动物栖息缓冲带，夜市演出须在 22 时前结束扩音"
+  }
+}

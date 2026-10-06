@@ -1,0 +1,16 @@
+{
+  "event_id": "evt-2026-10-10-015",
+  "event_type": "PERFORMANCE_SUSPENDED",
+  "aggregate_type": "joint_response",
+  "aggregate_id": "resp-2026-10-10-02",
+  "occurred_at": "2026-10-10T20:50:00+08:00",
+  "version": 1,
+  "summary": "因相邻摊位冒烟排查，夜市舞台 20:30 非遗演出停演，仅释放舞台区容量",
+  "basis_event_ids": ["evt-2026-10-10-013"],
+  "payload": {
+    "zone_id": "night-market-stage",
+    "program_id": "ich-show-2030",
+    "capacity_released": 800,
+    "reason": "相邻摊位冒烟排查；其余已核销体验不受影响"
+  }
+}

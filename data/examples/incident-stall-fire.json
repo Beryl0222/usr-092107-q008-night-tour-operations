@@ -1,0 +1,16 @@
+{
+  "event_id": "evt-2026-10-10-013",
+  "event_type": "INCIDENT_REPORTED",
+  "aggregate_type": "site_incident",
+  "aggregate_id": "inc-2026-10-10-07",
+  "occurred_at": "2026-10-10T20:35:00+08:00",
+  "version": 1,
+  "summary": "夜市 A12 摊位冒烟，现场安保已到场",
+  "reported_by": "夜市管理公司",
+  "report_key": "NM-INC-2026-10-10-031",
+  "payload": {
+    "kind": "摊位冒烟",
+    "location": "夜市 A12 摊位",
+    "correlation_key": "stall-smoke-a12"
+  }
+}

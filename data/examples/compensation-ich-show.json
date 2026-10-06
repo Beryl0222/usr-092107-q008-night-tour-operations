@@ -1,0 +1,15 @@
+{
+  "event_id": "evt-2026-10-10-017",
+  "event_type": "COMPENSATION_RECORDED",
+  "aggregate_type": "compensation_case",
+  "aggregate_id": "comp-2026-10-10-01",
+  "occurred_at": "2026-10-10T21:10:00+08:00",
+  "version": 1,
+  "summary": "20:30 非遗演出停演补偿：承办方责任，由承办方责任保险支付",
+  "payload": {
+    "responsibility_party": "演出承办方",
+    "funding_source": "承办方责任保险",
+    "cause_event_id": "evt-2026-10-10-015",
+    "items": "20:30 场次退票与返程接驳补贴"
+  }
+}

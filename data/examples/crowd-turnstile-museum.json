@@ -1,0 +1,18 @@
+{
+  "event_id": "evt-2026-10-10-006",
+  "event_type": "CROWD_COUNTED",
+  "aggregate_type": "crowd_measurement",
+  "aggregate_id": "museum-gate-2026-10-10-2000",
+  "occurred_at": "2026-10-10T20:05:00+08:00",
+  "version": 1,
+  "summary": "博物馆夜场 19:00-20:00 闸机入场 1820 人",
+  "reported_by": "县博物馆",
+  "report_key": "MUS-GATE-2026-10-10-2000",
+  "payload": {
+    "coverage_scope": "entrance_only",
+    "data_kind": "turnstile_actual",
+    "source_device": "museum-gate-03",
+    "count": 1820,
+    "window": "19:00-20:00"
+  }
+}

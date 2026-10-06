@@ -1,0 +1,14 @@
+{
+  "event_id": "evt-2026-10-10-012",
+  "event_type": "DIRECTIVE_ISSUED",
+  "aggregate_type": "joint_response",
+  "aggregate_id": "resp-2026-10-10-01",
+  "occurred_at": "2026-10-10T20:23:00+08:00",
+  "version": 1,
+  "summary": "对尚未出发游客：21:30 观星场次取消，按原渠道退改",
+  "payload": {
+    "audience_segment": "not_departed",
+    "instruction": "尚未出发的 21:30 观星场次取消，请按原购票渠道办理退改，勿前往林区",
+    "channel": "购票平台短信与小程序推送"
+  }
+}

@@ -19,10 +19,26 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "PERMIT_GRANTED",
         "PROGRAM_CLEARED",
+        "SERVICE_CHANGED",
+        "ROSTER_CHECKED_IN",
+        "BOUNDARY_SET",
         "CAPACITY_OBSERVED",
+        "CROWD_COUNTED",
+        "PLAN_PUBLISHED",
         "ALERT_RAISED",
+        "INCIDENT_REPORTED",
+        "ITINERARY_INVALIDATED",
         "ZONE_RESTRICTED",
+        "FLOW_THROTTLED",
+        "SHUTTLE_ADDED",
+        "ROUTE_SHORTENED",
+        "PROGRAM_CANCELLED",
+        "PERFORMANCE_SUSPENDED",
+        "CAPACITY_RELEASED",
+        "COMPENSATION_RECORDED",
+        "DIRECTIVE_ISSUED",
         "RESPONSE_CLOSED"
       ]
     },
@@ -31,8 +47,16 @@
       "enum": [
         "night_program",
         "capacity_zone",
+        "transport_service",
+        "participant_roster",
+        "environment_boundary",
+        "crowd_measurement",
+        "evacuation_plan",
         "operational_alert",
-        "joint_response"
+        "site_incident",
+        "visitor_itinerary",
+        "joint_response",
+        "compensation_case"
       ]
     },
     "aggregate_id": {
@@ -50,7 +74,316 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "reported_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "上报单位标识，与 report_key 组合用于重复上报去重"
+    },
+    "report_key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "上报方侧唯一编号，同一上报单位内不得复用"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["operations", "partner"],
+      "description": "缺省视为 operations：仅值班室运行视图可见"
+    },
+    "partner_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "visibility 为 partner 时必填，合作方仅见自身资源与处置要求"
+    },
+    "basis_event_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "决策类事件必填：处置所依据的实际事件，供事后复盘归因"
+    },
+    "payload": {
+      "type": "object"
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "event_type": { "enum": ["INCIDENT_REPORTED", "ROSTER_CHECKED_IN", "CROWD_COUNTED", "ALERT_RAISED"] } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["reported_by", "report_key"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "enum": ["ZONE_RESTRICTED", "FLOW_THROTTLED", "SHUTTLE_ADDED", "ROUTE_SHORTENED", "PROGRAM_CANCELLED", "PERFORMANCE_SUSPENDED"] } },
+        "required": ["event_type"]
+      },
+      "then": { "required": ["basis_event_ids"] }
+    },
+    {
+      "if": {
+        "properties": { "visibility": { "const": "partner" } },
+        "required": ["visibility"]
+      },
+      "then": { "required": ["partner_id"] }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PERMIT_GRANTED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["permit_id"],
+            "properties": { "permit_id": { "type": "string", "minLength": 1 } }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "SERVICE_CHANGED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["service_kind"],
+            "properties": { "service_kind": { "enum": ["metro", "shuttle", "bus"] } }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "ROSTER_CHECKED_IN" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["role", "count"],
+            "properties": {
+              "role": { "enum": ["merchant", "performer", "staff"] },
+              "count": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "BOUNDARY_SET" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["boundary_kind"],
+            "properties": { "boundary_kind": { "enum": ["lighting", "noise"] } }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "CROWD_COUNTED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["coverage_scope", "data_kind"],
+            "properties": {
+              "coverage_scope": {
+                "enum": ["entrance_only", "zone_partial", "zone_full", "route_segment"],
+                "description": "客流数据覆盖范围，不同来源不得混用"
+              },
+              "data_kind": {
+                "enum": ["turnstile_actual", "sensor_estimate", "manual_count", "forecast"],
+                "description": "闸机实数 / 设备估算 / 人工点数 / 模型预测"
+              },
+              "source_device": { "type": "string", "minLength": 1 },
+              "model_ref": { "type": "string", "minLength": 1 },
+              "valid_until": { "type": "string", "format": "date-time" }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": { "data_kind": { "const": "turnstile_actual" } },
+                  "required": ["data_kind"]
+                },
+                "then": { "required": ["source_device"] }
+              },
+              {
+                "if": {
+                  "properties": { "data_kind": { "const": "forecast" } },
+                  "required": ["data_kind"]
+                },
+                "then": {
+                  "required": ["model_ref", "valid_until"],
+                  "not": { "required": ["source_device"] },
+                  "description": "预测值不得携带闸机设备号，不能伪装成闸机实数"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PLAN_PUBLISHED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["plan_version"],
+            "properties": { "plan_version": { "type": "string", "minLength": 1 } }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "ALERT_RAISED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["alert_kind"],
+            "properties": {
+              "alert_kind": {
+                "enum": ["weather_thunderstorm", "weather_gale", "fire_risk", "ecology_sensitive_species", "noise_breach", "other"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "ITINERARY_INVALIDATED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["cause_event_id"],
+            "properties": { "cause_event_id": { "type": "string", "minLength": 1 } }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "enum": ["ROUTE_SHORTENED", "PROGRAM_CANCELLED"] } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["trigger_alert_id"],
+            "properties": { "trigger_alert_id": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "description": "自然观察类活动遇敏感物种、雷雨或消防风险时优先缩线或取消，必须引用触发的告警"
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "PERFORMANCE_SUSPENDED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["zone_id", "capacity_released"],
+            "not": { "required": ["revoked_experience_ids"] },
+            "properties": {
+              "zone_id": { "type": "string", "minLength": 1 },
+              "capacity_released": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "description": "临时停演只释放对应区域容量，不得连带撤销已核销的其他体验"
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "CAPACITY_RELEASED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["zone_id", "released_by_event_id"],
+            "properties": {
+              "zone_id": { "type": "string", "minLength": 1 },
+              "released_by_event_id": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "COMPENSATION_RECORDED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["responsibility_party", "funding_source", "cause_event_id"],
+            "properties": {
+              "responsibility_party": { "type": "string", "minLength": 1 },
+              "funding_source": { "type": "string", "minLength": 1 },
+              "cause_event_id": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "description": "补偿按责任与资金来源分别记录"
+      }
+    },
+    {
+      "if": {
+        "properties": { "event_type": { "const": "DIRECTIVE_ISSUED" } },
+        "required": ["event_type"]
+      },
+      "then": {
+        "required": ["payload"],
+        "properties": {
+          "payload": {
+            "required": ["audience_segment", "instruction"],
+            "properties": {
+              "audience_segment": {
+                "enum": ["entered", "not_departed", "all"],
+                "description": "已入场与尚未出发人群收到不同指令"
+              },
+              "instruction": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    }
+  ],
   "additionalProperties": true
 }
